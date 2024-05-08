@@ -18,7 +18,7 @@ def get_transactions():
 def add_transaction():
     if request.method == 'POST':
         # Create a new transaction object using form field values
-        transation = {
+        transaction = {
               'id': len(transactions) + 1,
               'date': request.form['date'],
               'amount': float(request.form['amount'])
