@@ -15,12 +15,12 @@ def get_transactions():
 
 # Create operation
 @app.route("/add",methods=["GET", "POST"])
-def add_transactions():
+def add_transaction():
     if request.method == 'POST':
         # Create a new transaction object using form field values
         transation = {
-              'id': len(transactions)+1
-              'date': request.form['date']
+              'id': len(transactions) + 1,
+              'date': request.form['date'],
               'amount': float(request.form['amount'])
              }
 
