@@ -64,7 +64,7 @@ def edit_transaction(transaction_id):
 def delete_transaction(transaction_id):
     #Find transaction with matching ID
     for transaction in transactions:
-        if transaction['ID'] == transaction_id:
+        if transaction['id'] == transaction_id:
             transactions.remove(transaction)
             break
     
