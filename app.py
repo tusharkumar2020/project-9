@@ -60,7 +60,7 @@ def edit_transaction(transaction_id):
 
 
 # Delete operation
-@app.route('/delete/<int:transaction_id>',methods=['DELETE'])
+@app.route('/delete/<int:transaction_id>')
 def delete_transaction(transaction_id):
     #Find transaction with matching ID
     for transaction in transactions:
