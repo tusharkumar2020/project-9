@@ -19,6 +19,24 @@ def get_transactions():
 
 # Create operation
 
+@app.route("/add", methods=["POST", "GET"])
+def add_transaction():
+    if request.method == 'POST':
+        # Create a new transaction object using form field values
+        transaction = {
+            'id': len(transactions) + 1,            # Generate a new ID based on the current length of the transactions list
+            'date': request.form['date'],           # Get the 'date' field value from the form
+            'amount': float(request.form['amount']) # Get the 'amount' field value from the form and convert it to a float
+        }
+        # Append the new transaction to the transactions list
+        transactions.append(transaction)
+        # Redirect to the transactions list page after adding the new transaction
+        return redirect(url_for("get_transactions"))
+    
+    # If the request method is GET, render the form template to display the add transaction form
+    return render_template("form.html")
+    
+
 # Update operation
 
 # Delete operation
