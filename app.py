@@ -2,7 +2,7 @@
 from flask import Flask, request, url_for, redirect, render_template
 
 # Instantiate Flask functionality
-app = Flask(__nam)
+app = Flask(__name__)
 
 # Sample data
 transactions = [
@@ -56,4 +56,6 @@ def delete_transaction(transaction_id):
     return redirect(url_for("get_transactions"))
 
 # Run the Flask app
+if __name__ == "__main__":
+    app.run(debug=True)
     
