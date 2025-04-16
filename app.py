@@ -17,6 +17,17 @@ def get_transactions():
     return render_template("transactions.html", transactions=transactions)
 
 # Create operation
+@app.route("/add", methods=["GET", "POST"])
+def add_transaction():
+    if request.method == "POST":
+        transactions = {
+            'id': len(transactions) + 1,
+            'date': request.form['date'],
+            'amount': float(request.form['amount'])
+        }
+        transactions.append(transactions)
+        return redirect(url_for("get_transactions"))
+    return render_template("form.html")
 
 # Update operation
 
