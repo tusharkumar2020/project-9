@@ -77,6 +77,15 @@ def delete_transaction(transaction_id):
 # Point 1
 @app.route('/search', methods=['GET', 'POST'])
 def search_transactions():
+    # Point 2
+    if request.method == 'POST':
+        maximum_value_str = request.form.get('max_amount')
+        minimum_value_str = request.form.get('min_amount')
+        try:
+            minimum_value = float(minimum_value_str)
+            maximum_value = float(maximum_value_str)
+        except ValueError:
+            return "Invalid Amount"
 
 # Run the Flask application
 if __name__ == "__main__":
