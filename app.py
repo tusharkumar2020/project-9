@@ -73,6 +73,11 @@ def delete_transaction(transaction_id):
     # Redirect to the transactions list page after deleting the transaction
     return redirect(url_for("get_transactions"))
 
+# Exercise 1: Search Transactions
+# Point 1
+@app.route('/search', methods=['GET', 'POST'])
+def search_transactions():
+
 # Run the Flask application
 if __name__ == "__main__":
     app.run(debug=True)
