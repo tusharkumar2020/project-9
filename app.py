@@ -30,6 +30,21 @@ def add_transaction():
     return render_template("form.html")
 
 # Update operation
+@app.route("/edit/<int:transaction_id>", methods=["GET", "POST"])
+def edit_transaction(transaction_id):
+    if request.method == 'POST':
+        date = request.form['date']
+        amount = float(request.form['amount'])
+        for transaction in transactions:
+            if transaction['id'] == transaction_id:
+                transaction['date'] = date
+                transaction['amount'] = amount
+                break
+        return redirect(url_for("get_transactions"))
+    for transaction in transactions:
+        if transaction['id'] == transaction_id:
+            return render_template("edit.html", transaction=transaction)
+    return {"message": "Transaction not found"}, 40
 
 # Delete operation
 
