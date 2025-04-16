@@ -86,6 +86,16 @@ def search_transactions():
             maximum_value = float(maximum_value_str)
         except ValueError:
             return "Invalid Amount"
+        # Point 3: Filter the transactions list
+        filtered_transactions = [
+            t for t in transactions
+            if (minimum_amount is None or t['amount'] >= min_amount) and
+                (maximum_amount is None or t['amount'] <= max_amount)
+        ]
+        # Point 4
+        return render_template('transactions.html', transactions=filtered_transactions)
+    else:
+        return render_template('search.html')
 
 # Run the Flask application
 if __name__ == "__main__":
