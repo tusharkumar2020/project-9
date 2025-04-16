@@ -81,16 +81,18 @@ def search_transactions():
     if request.method == 'POST':
         maximum_value_str = request.form.get('max_amount')
         minimum_value_str = request.form.get('min_amount')
+        minimum_value = None  # Initialize outside the try block
+        maximum_value = None  # Initialize outside the try block
         try:
-            minimum_value = float(minimum_value_str)
-            maximum_value = float(maximum_value_str)
+            minimum_value = float(minimum_value_str) if minimum_value_str else None
+            maximum_value = float(maximum_value_str) if maximum_value_str else None
         except ValueError:
             return "Invalid Amount"
         # Point 3: Filter the transactions list
         filtered_transactions = [
             t for t in transactions
-            if (minimum_amount is None or t['amount'] >= min_amount) and
-                (maximum_amount is None or t['amount'] <= max_amount)
+            if (minimum_value is None or t['amount'] >= minimum_value) and
+               (maximum_value is None or t['amount'] <= maximum_value)
         ]
         # Point 4
         return render_template('transactions.html', transactions=filtered_transactions)
