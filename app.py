@@ -94,6 +94,7 @@ def search_transactions():
         ]
         # Point 4
         return render_template('transactions.html', transactions=filtered_transactions)
+    # Point 5
     else:
         return render_template('search.html')
 
